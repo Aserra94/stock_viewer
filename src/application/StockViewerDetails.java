@@ -44,7 +44,7 @@ public class StockViewerDetails extends Stage {
 		setScene(scene);
 	}
 
-	private Parent createGUI() {
+	public Parent createGUI() {
 		AnchorPane pane = new AnchorPane();
 		
 		TableView<StockDataDetails> tab = new TableView<>(getItems());
@@ -94,11 +94,14 @@ public class StockViewerDetails extends Stage {
 
 	private void generateGraph(){
 		 Stage stage = new Stage();
-		        stage.setTitle("Stock for" + companyName);
+		        stage.setTitle("Stock for " + data.getCompanyName());//+ companyName);
+		        
 		        //defining the axes
 		        final NumberAxis xAxis = new NumberAxis();
 		        final NumberAxis yAxis = new NumberAxis();
-		        xAxis.setLabel("Date");
+		        xAxis.setLabel("Day Number");
+		        yAxis.setLabel("Price");
+		        yAxis.setAutoRanging(true);
 		        //creating the chart
 		        final LineChart<Number,Number> lineChart = 
 		                new LineChart<Number,Number>(xAxis,yAxis);
@@ -109,20 +112,27 @@ public class StockViewerDetails extends Stage {
 		        series.setName("Current Price");
 		        //populating the series with data
 		        
-		        for {int 0; 0< numoflines ;0++{
-		        series.getData().add(new XYChart.Data(date, highest));
-		        }
+		    	
 		        
-		        
-		        
-		        
-		        
+		        StockDataDetails current = values.get(0);
+				int i = 0;
+				for (StockDataDetails details : values) {
+					//details = current;
+				i++;
+				
+	  series.getData().add(new XYChart.Data(i,details.getHigh()));
+						
+					}
+					
+									
+		      
+		             
 		        Scene scene  = new Scene(lineChart,800,600);
 		        lineChart.getData().add(series);
 		       
 		        stage.setScene(scene);
 		        stage.show();
-		    }
+		    
 	
 	}
 	
