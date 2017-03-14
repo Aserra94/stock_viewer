@@ -110,6 +110,19 @@ public class StockViewer extends Application{
 		data.add(new StockData("PFG.L", "Provident Financial plc", getValue("PFG.csv"), "PFG.csv"));
 		data.add(new StockData("PPB.L", "Paddy Power Betfair plc", getValue("PPB.csv"), "PPB.csv"));
 		data.add(new StockData("PRU.L", "Prudential plc", getValue("PRU.csv"), "PRU.csv"));
+		data.add(new StockData("PSN.L", "Persimmon plc", getValue("PSN.csv"), "PSN.csv"));
+		data.add(new StockData("RB.L", "Reckitt Benckiser Group plc", getValue("RB.csv"), "RB.csv"));
+		data.add(new StockData("RDSA.L", "Royal Dutch Shell plc", getValue("RDSA.csv"), "RDSA.csv"));
+		data.add(new StockData("RR.L", "Rolls-Royce Holdings plc", getValue("RR.csv"), "RR.csv"));
+		data.add(new StockData("SDR.L", "Schroders plc", getValue("SDR.csv"), "SDR.csv"));
+		data.add(new StockData("SHP.L", "Shire plc", getValue("SHP.csv"), "SHP.csv"));
+		data.add(new StockData("SKY.L", "Sky plc", getValue("SKY.csv"), "SKY.csv"));
+		data.add(new StockData("SSE.L", "SSE plc", getValue("SSE.csv"), "SSE.csv"));
+		data.add(new StockData("STJ.L", "St Jame's Place plc", getValue("STJ.csv"), "STJ.csv"));
+		data.add(new StockData("TSCO.L", "Tesco plc", getValue("TSCO.csv"), "TSCO.csv"));
+		data.add(new StockData("TUI.L", "TUI AG plc", getValue("TUI.csv"), "TUI.csv"));
+		data.add(new StockData("VOD.L", "Vodafone Group plc", getValue("VOD.csv"), "VOD.csv"));
+		data.add(new StockData("WPG.L", "Wordlplay Group", getValue("WPG.csv"), "WPG.csv"));
 		
 		return FXCollections.observableArrayList(data);
 	}
