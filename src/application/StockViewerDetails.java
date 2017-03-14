@@ -109,40 +109,49 @@ public class StockViewerDetails extends Stage {
 		        lineChart.setTitle("Stock Graph");
 		        //defining a series
 		        XYChart.Series series = new XYChart.Series();
-		        series.setName("Volume");
+		        series.setName("High");
 		        //populating the series with data
 		       
 		        XYChart.Series series2 = new XYChart.Series();
-			      series2.setName("High");
+			      series2.setName("Volume");
 			      //populating the series with data
 			      
 			      XYChart.Series series3 = new XYChart.Series();
 			      series3.setName("Close");
 			      //populating the series with data
 		        
+			      XYChart.Series series4 = new XYChart.Series();
+			      series4.setName("Open");
+			      //populating the series with data
+			      
+			      XYChart.Series series5 = new XYChart.Series();
+			      series5.setName("Low");
+			      //populating the series with data
+			      
 		        StockDataDetails current = values.get(0);
 				int i = 0;
 				for (StockDataDetails details : values) {
 					//details = current;
 				i++;
 				
-				series.getData().add(new XYChart.Data(i,details.getVolume()));
+				series.getData().add(new XYChart.Data(i,details.getHigh()));
 				  
-				  
-				series2.getData().add(new XYChart.Data(i,details.getHigh()));
-				
+				series2.getData().add(new XYChart.Data(i,details.getVolume()));
 				
 				series3.getData().add(new XYChart.Data(i,details.getClose()));
+				
+				series4.getData().add(new XYChart.Data(i,details.getOpen()));
+				
+				series5.getData().add(new XYChart.Data(i,details.getLow()));
 	
 					}					
 		             
 		        Scene scene  = new Scene(lineChart,800,600);
-		        lineChart.getData().addAll(series,series2,series3);
+		        lineChart.getData().addAll(series,series2,series3, series4, series5);
 		       
 		        stage.setScene(scene);
 		        stage.show();
-		    
-	
+
 	}
 	
 	private void generateReport() {		
