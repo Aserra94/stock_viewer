@@ -22,6 +22,8 @@ import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -96,9 +98,10 @@ public class StockViewerDetails extends Stage {
 		 Stage stage = new Stage();
 		        stage.setTitle("Stock for " + data.getCompanyName());//+ companyName);
 		        
+		        
 		        //defining the axes
 		        final NumberAxis xAxis = new NumberAxis();
-		        final NumberAxis yAxis = new NumberAxis();
+		        final NumberAxis yAxis = new NumberAxis(0, 500000, 100000);
 		        xAxis.setLabel("Day Number");
 		        yAxis.setLabel("Price");
 		        yAxis.setAutoRanging(true);
@@ -146,11 +149,18 @@ public class StockViewerDetails extends Stage {
 				
 				series5.getData().add(new XYChart.Data(i,details.getLow()));
 	
-					}					
-		             
-		        Scene scene  = new Scene(lineChart,800,600);
-		        lineChart.getData().addAll(series,series2,series3, series4, series5);
+					}			
+			
 		       
+		        lineChart.getData().addAll(series, series2, series3, series4, series5);
+		        
+		        TabPane tabPane = new TabPane();
+		        Tab tab = new Tab();
+		        tab.setText("new tab");
+		        tab.setContent(lineChart);
+		        tabPane.getTabs().add(tab);
+		       
+		        Scene scene  = new Scene(tabPane,800,600);
 		        stage.setScene(scene);
 		        stage.show();
 
