@@ -39,7 +39,7 @@ public class StockViewerDetails extends Stage {
 		this.data = data;
 		this.number = number;
 		this.setTitle(data.getCompanyName());
-		setResizable(false);
+		setResizable(true);
 		Scene scene = new Scene(createGUI(), 535, 600);
 		setScene(scene);
 	}
@@ -107,6 +107,8 @@ public class StockViewerDetails extends Stage {
 		                new LineChart<Number,Number>(xAxis,yAxis);
 		                
 		        lineChart.setTitle("Stock Graph");
+		        lineChart.setCreateSymbols(false);
+		        
 		        //defining a series
 		        XYChart.Series series = new XYChart.Series();
 		        series.setName("High");
@@ -116,7 +118,7 @@ public class StockViewerDetails extends Stage {
 			      series2.setName("Volume");
 			      //populating the series with data
 			      
-			      XYChart.Series series3 = new XYChart.Series();
+			     XYChart.Series series3 = new XYChart.Series();
 			      series3.setName("Close");
 			      //populating the series with data
 		        

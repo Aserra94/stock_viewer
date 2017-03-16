@@ -35,7 +35,7 @@ public class StockViewer extends Application{
 		
 		primaryStage.setTitle("Simple Stock Viewer");
 		primaryStage.setScene(scene);
-		primaryStage.setResizable(false);
+		primaryStage.setResizable(true);
 		primaryStage.show();
 	}
 
