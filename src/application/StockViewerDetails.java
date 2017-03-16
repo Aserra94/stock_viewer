@@ -115,11 +115,28 @@ public class StockViewerDetails extends Stage {
 		        final NumberAxis closeXAxis = new NumberAxis();
 		        final NumberAxis closeYAxis = new NumberAxis();
 		        
+		        
+		        //define labels
 		        highXAxis.setLabel("Day Number");
 		        highYAxis.setLabel("Price");
 		        highYAxis.setAutoRanging(true);
+		        
+		        lowXAxis.setLabel("Day Number");
+		        lowYAxis.setLabel("Price");
+		        lowYAxis.setAutoRanging(true);
+		        
+		        volumeXAxis.setLabel("Day Number");
+		        volumeYAxis.setLabel("Price");
+		        volumeYAxis.setAutoRanging(true);
+		        
+		        openXAxis.setLabel("Day Number");
+		        openYAxis.setLabel("Price");
+		        openYAxis.setAutoRanging(true);
+		        
+		        closeXAxis.setLabel("Day Number");
+		        closeYAxis.setLabel("Price");
+		        closeYAxis.setAutoRanging(true);
 		        //creating the chart
-		        //duplicate this
 
 		        final LineChart<Number,Number> highLineChart = 
 		                new LineChart<Number,Number>(highXAxis,highYAxis);
@@ -131,9 +148,22 @@ public class StockViewerDetails extends Stage {
 		                new LineChart<Number,Number>(openXAxis,openYAxis);
 		        final LineChart<Number,Number> closeLineChart = 
 		                new LineChart<Number,Number>(closeXAxis,closeYAxis);
-		                
-		        highLineChart.setTitle("Stock Graph");
+		        
+		        //add company name
+		        highLineChart.setTitle("High");
 		        highLineChart.setCreateSymbols(false);
+		        
+		        lowLineChart.setTitle("Low");
+		        lowLineChart.setCreateSymbols(false);
+		        
+		        volumeLineChart.setTitle("Volume");
+		        volumeLineChart.setCreateSymbols(false);
+		        
+		        openLineChart.setTitle("Open");
+		        openLineChart.setCreateSymbols(false);
+		        
+		        closeLineChart.setTitle("Close");
+		        closeLineChart.setCreateSymbols(false);
 		        
 		        //defining a series
 		        XYChart.Series highSeries = new XYChart.Series();
@@ -147,7 +177,6 @@ public class StockViewerDetails extends Stage {
 		        openSeries.setName("Open");
 		        closeSeries.setName("Close");
 		        
-			
 		       
 		        highLineChart.getData().add(highSeries);
 		        lowLineChart.getData().add(lowSeries);
