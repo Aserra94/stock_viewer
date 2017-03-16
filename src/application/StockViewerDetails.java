@@ -100,71 +100,106 @@ public class StockViewerDetails extends Stage {
 		        
 		        
 		        //defining the axes
-		        final NumberAxis xAxis = new NumberAxis();
-		        final NumberAxis yAxis = new NumberAxis(0, 500000, 100000);
-		        xAxis.setLabel("Day Number");
-		        yAxis.setLabel("Price");
-		        yAxis.setAutoRanging(true);
+		        final NumberAxis highXAxis = new NumberAxis();
+		        final NumberAxis highYAxis = new NumberAxis();
+		        
+		        final NumberAxis lowXAxis = new NumberAxis();
+		        final NumberAxis lowYAxis = new NumberAxis();
+		        
+		        final NumberAxis volumeXAxis = new NumberAxis();
+		        final NumberAxis volumeYAxis = new NumberAxis();
+		        
+		        final NumberAxis openXAxis = new NumberAxis();
+		        final NumberAxis openYAxis = new NumberAxis();
+		        
+		        final NumberAxis closeXAxis = new NumberAxis();
+		        final NumberAxis closeYAxis = new NumberAxis();
+		        
+		        highXAxis.setLabel("Day Number");
+		        highYAxis.setLabel("Price");
+		        highYAxis.setAutoRanging(true);
 		        //creating the chart
-		        final LineChart<Number,Number> lineChart = 
-		                new LineChart<Number,Number>(xAxis,yAxis);
+		        //duplicate this
+
+		        final LineChart<Number,Number> highLineChart = 
+		                new LineChart<Number,Number>(highXAxis,highYAxis);
+		        final LineChart<Number,Number> lowLineChart = 
+		                new LineChart<Number,Number>(lowXAxis,lowYAxis);
+		        final LineChart<Number,Number> volumeLineChart = 
+		                new LineChart<Number,Number>(volumeXAxis,volumeYAxis);
+		        final LineChart<Number,Number> openLineChart = 
+		                new LineChart<Number,Number>(openXAxis,openYAxis);
+		        final LineChart<Number,Number> closeLineChart = 
+		                new LineChart<Number,Number>(closeXAxis,closeYAxis);
 		                
-		        lineChart.setTitle("Stock Graph");
-		        lineChart.setCreateSymbols(false);
+		        highLineChart.setTitle("Stock Graph");
+		        highLineChart.setCreateSymbols(false);
 		        
 		        //defining a series
-		        XYChart.Series series = new XYChart.Series();
-		        series.setName("High");
-		        //populating the series with data
-		       
-		        XYChart.Series series2 = new XYChart.Series();
-			      series2.setName("Volume");
-			      //populating the series with data
-			      
-			     XYChart.Series series3 = new XYChart.Series();
-			      series3.setName("Close");
-			      //populating the series with data
+		        XYChart.Series highSeries = new XYChart.Series();
+		        XYChart.Series lowSeries = new XYChart.Series();
+		        XYChart.Series volumeSeries = new XYChart.Series();
+		        XYChart.Series openSeries = new XYChart.Series();
+		        XYChart.Series closeSeries = new XYChart.Series();
+		        highSeries.setName("High");
+		        lowSeries.setName("Low");
+		        volumeSeries.setName("Volume");
+		        openSeries.setName("Open");
+		        closeSeries.setName("Close");
 		        
-			      XYChart.Series series4 = new XYChart.Series();
-			      series4.setName("Open");
-			      //populating the series with data
-			      
-			      XYChart.Series series5 = new XYChart.Series();
-			      series5.setName("Low");
-			      //populating the series with data
-			      
+			
+		       
+		        highLineChart.getData().add(highSeries);
+		        lowLineChart.getData().add(lowSeries);
+		        volumeLineChart.getData().add(volumeSeries);
+		        openLineChart.getData().add(openSeries);
+		        closeLineChart.getData().add(closeSeries);
+		        
 		        StockDataDetails current = values.get(0);
 				int i = 0;
 				for (StockDataDetails details : values) {
 					//details = current;
-				i++;
+					i++;
 				
-				series.getData().add(new XYChart.Data(i,details.getHigh()));
-				  
-				series2.getData().add(new XYChart.Data(i,details.getVolume()));
-				
-				series3.getData().add(new XYChart.Data(i,details.getClose()));
-				
-				series4.getData().add(new XYChart.Data(i,details.getOpen()));
-				
-				series5.getData().add(new XYChart.Data(i,details.getLow()));
+					highSeries.getData().add(new XYChart.Data(i,details.getHigh()));
+					  
+					lowSeries.getData().add(new XYChart.Data(i,details.getLow()));
+					
+					volumeSeries.getData().add(new XYChart.Data(i,details.getVolume()));
+					
+					openSeries.getData().add(new XYChart.Data(i,details.getOpen()));
+					
+					closeSeries.getData().add(new XYChart.Data(i,details.getClose()));
 	
-					}			
-			
-		       
-		        lineChart.getData().addAll(series, series2, series3, series4, series5);
+				}	
 		        
 		        TabPane tabPane = new TabPane();
-		        Tab tab = new Tab();
-		        tab.setText("new tab");
-		        tab.setContent(lineChart);
-		        tabPane.getTabs().add(tab);
+		        Tab highTab = new Tab();
+		        highTab.setText("High");
+		        highTab.setContent(highLineChart);
+		        Tab lowTab = new Tab();
+		        lowTab.setText("Low");
+		        lowTab.setContent(lowLineChart);
+		        Tab volumeTab = new Tab();
+		        volumeTab.setText("Volume");
+		        volumeTab.setContent(volumeLineChart);
+		        Tab openTab = new Tab();
+		        openTab.setText("Open");
+		        openTab.setContent(openLineChart);
+		        Tab closeTab = new Tab();
+		        closeTab.setText("Close");
+		        closeTab.setContent(closeLineChart);
+		        
+		        tabPane.getTabs().addAll(highTab,lowTab,volumeTab,openTab,closeTab);		        
+			      
+		     	
 		       
 		        Scene scene  = new Scene(tabPane,800,600);
 		        stage.setScene(scene);
 		        stage.show();
 
 	}
+	
 	
 	private void generateReport() {		
 		StockDataDetails highest = values.get(0);
