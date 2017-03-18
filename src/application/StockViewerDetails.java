@@ -103,6 +103,7 @@ public class StockViewerDetails extends Stage {
 		        final NumberAxis highXAxis = new NumberAxis();
 		        final NumberAxis highYAxis = new NumberAxis();
 		        
+		        
 		        final NumberAxis lowXAxis = new NumberAxis();
 		        final NumberAxis lowYAxis = new NumberAxis();
 		        
@@ -149,20 +150,37 @@ public class StockViewerDetails extends Stage {
 		        final LineChart<Number,Number> closeLineChart = 
 		                new LineChart<Number,Number>(closeXAxis,closeYAxis);
 		        
-		        //add company name
-		        highLineChart.setTitle("High");
+		        
+		        //Sets Line chart in range
+		        highYAxis.setForceZeroInRange(false);
+		        highLineChart.setAnimated(false);
+		        
+		        lowYAxis.setForceZeroInRange(false);
+		        lowLineChart.setAnimated(false);
+		        
+		        volumeYAxis.setForceZeroInRange(false);
+		        volumeLineChart.setAnimated(false);
+		        
+		        openYAxis.setForceZeroInRange(false);
+		        openLineChart.setAnimated(false);
+		        
+		        closeYAxis.setForceZeroInRange(false);
+		        closeLineChart.setAnimated(false);
+       
+		        //Chart Titles
+		        highLineChart.setTitle("High: "  + data.getCompanyName());
 		        highLineChart.setCreateSymbols(false);
 		        
-		        lowLineChart.setTitle("Low");
+		        lowLineChart.setTitle("Low: "  + data.getCompanyName());
 		        lowLineChart.setCreateSymbols(false);
 		        
-		        volumeLineChart.setTitle("Volume");
+		        volumeLineChart.setTitle("Volume: "  + data.getCompanyName());
 		        volumeLineChart.setCreateSymbols(false);
 		        
-		        openLineChart.setTitle("Open");
+		        openLineChart.setTitle("Open: "  + data.getCompanyName());
 		        openLineChart.setCreateSymbols(false);
 		        
-		        closeLineChart.setTitle("Close");
+		        closeLineChart.setTitle("Close: "  + data.getCompanyName());
 		        closeLineChart.setCreateSymbols(false);
 		        
 		        //defining a series
